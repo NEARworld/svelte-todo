@@ -1,6 +1,13 @@
 <script>
 	import '../app.css';
+	import AddTask from '$lib/AddTask.svelte';
+	import TodoList from '../lib/TodoList.svelte';
 </script>
 
-<h1>Svelte Todo App</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<main class="max-w-4xl mx-auto mt-4">
+	<div class="text-center my-5 flex flex-col gap-4">
+		<h1 class="text-2xl font-bold">Svelte Todo App</h1>
+		<AddTask />
+		<TodoList />
+	</div>
+</main>
