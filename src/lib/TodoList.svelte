@@ -1,3 +1,8 @@
+<script>
+	export let tasks;
+	console.log('tasks:', tasks);
+</script>
+
 <div class="overflow-x-auto">
 	<table class="table">
 		<thead>
@@ -9,9 +14,11 @@
 		</thead>
 		<tbody>
 			<tr>
-				<th>1</th>
-				<td>Cy Ganderton</td>
-				<td>Quality Control Specialist</td>
+				{#each tasks as task}
+					<th>{task.id}</th>
+					<td>{task.text}</td>
+					<td>Quality Control Specialist</td>
+				{/each}
 			</tr>
 		</tbody>
 	</table>
