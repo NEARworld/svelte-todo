@@ -1,6 +1,5 @@
 <script>
 	export let tasks;
-	console.log('tasks:', tasks);
 </script>
 
 <div class="overflow-x-auto">
