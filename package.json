@@ -30,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"json-server": "^0.17.4"
+		"json-server": "^0.17.4",
+		"uuid": "^9.0.1"
 	}
 }

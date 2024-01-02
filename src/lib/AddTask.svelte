@@ -2,6 +2,7 @@
 	import Modal from '$lib/Modal.svelte';
 	import Icon from '@iconify/svelte';
 	import { invalidate } from '$app/navigation';
+	import { v4 as uuidv4 } from 'uuid';
 
 	let showModal = false;
 
@@ -12,7 +13,7 @@
 
 		const res = await fetch('/', {
 			method: 'POST',
-			body: JSON.stringify({ id: 2, text: newTaskValue })
+			body: JSON.stringify({ id: uuidv4(), text: newTaskValue })
 		});
 		const data = await res.json();
 		if (data) {
