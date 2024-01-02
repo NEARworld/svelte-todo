@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
 	import AddTask from '$lib/AddTask.svelte';
-	import TodoList from '../lib/TodoList.svelte';
+	import TodoList from '$lib/TodoList.svelte';
 
 	export let data;
 </script>
