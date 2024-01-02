@@ -12,13 +12,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				{#each tasks as task}
+			{#each tasks as task}
+				<tr>
 					<th>{task.id}</th>
 					<td>{task.text}</td>
 					<td>Quality Control Specialist</td>
-				{/each}
-			</tr>
+				</tr>
+			{/each}
 		</tbody>
 	</table>
 </div>
