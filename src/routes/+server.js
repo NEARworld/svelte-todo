@@ -66,3 +66,33 @@ export async function PATCH({ request }) {
 		);
 	}
 }
+
+export async function DELETE({ request }) {
+	try {
+		const data = await request.json();
+		const res = await fetch(`http://localhost:3001/tasks/${data.id}`, {
+			method: 'DELETE'
+		});
+		const todo = await res.json();
+
+		return new Response(JSON.stringify({ todo }), {
+			status: 200,
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+	} catch (e) {
+		return new Response(
+			JSON.stringify({
+				message: 'Something went wrong while editing Todo',
+				error: e
+			}),
+			{
+				status: 500,
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}
+		);
+	}
+}
