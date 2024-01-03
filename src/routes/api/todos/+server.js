@@ -33,7 +33,10 @@ export async function POST({ request }) {
 			JSON.stringify({
 				message: 'Something went wrong while creating a todo',
 				error: e
-			})
+			}),
+			{
+				status: 500
+			}
 		);
 	}
 }
@@ -60,7 +63,36 @@ export async function PATCH({ request }) {
 			JSON.stringify({
 				message: 'Something went wrong while updating a todo',
 				error: e
-			})
+			}),
+			{
+				status: 500
+			}
+		);
+	}
+}
+
+export async function DELETE({ request }) {
+	try {
+		const data = await request.json();
+
+		const todo = await prisma.todo.delete({
+			where: {
+				id: data.id
+			}
+		});
+
+		return new Response(JSON.stringify({ todo }), {
+			status: 200
+		});
+	} catch (e) {
+		return new Response(
+			JSON.stringify({
+				message: 'Something went wrong while deleting a todo',
+				error: e
+			}),
+			{
+				status: 500
+			}
 		);
 	}
 }

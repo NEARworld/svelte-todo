@@ -22,13 +22,18 @@
 		}
 	}
 	async function handleDeleteTask(e) {
-		const res = fetch('/', {
+		const res = await fetch('/api/todos', {
 			method: 'DELETE',
 			body: JSON.stringify({ id: task.id })
-		}).then((res) => res.json());
+		});
 
-		showModalDelete = false;
-		invalidate(() => true);
+		const data = await res.json();
+		console.log(data);
+
+		if (data) {
+			showModalDelete = false;
+			invalidate(() => true);
+		}
 	}
 </script>
 
