@@ -12,6 +12,9 @@
 	function handleEditTask() {
 		editedTaskValue = '';
 	}
+	function handleDeleteTask(e) {
+		e.preventDefault();
+	}
 </script>
 
 <tr>
@@ -39,5 +42,14 @@
 		<button on:click={() => (showModalDelete = true)}>
 			<Icon icon="mdi:trash-outline" class="scale-175 cursor-pointer text-red-600" />
 		</button>
+		<Modal bind:showModal={showModalDelete}>
+			<form on:submit={handleDeleteTask}>
+				<h3 class="font-bold text-lg">Delete Task</h3>
+				<h3 class="font-bold text-lg">Are you sure, you want to delete this task?</h3>
+				<div class="modal-action">
+					<button class="btn"> Yes </button>
+				</div>
+			</form>
+		</Modal>
 	</td>
 </tr>
