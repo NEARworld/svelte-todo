@@ -2,7 +2,6 @@
 	import Modal from '$lib/Modal.svelte';
 	import Icon from '@iconify/svelte';
 	import { invalidate } from '$app/navigation';
-	import { v4 as uuidv4 } from 'uuid';
 
 	let showModal = false;
 
@@ -11,9 +10,9 @@
 	async function handleNewTaskSubmit(e) {
 		e.preventDefault();
 
-		const res = await fetch('/', {
+		const res = await fetch('/api/todos', {
 			method: 'POST',
-			body: JSON.stringify({ id: uuidv4(), text: newTaskValue })
+			body: JSON.stringify({ text: newTaskValue })
 		});
 		const data = await res.json();
 		if (data) {
