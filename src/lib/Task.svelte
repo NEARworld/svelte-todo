@@ -21,8 +21,14 @@
 			invalidate(() => true);
 		}
 	}
-	function handleDeleteTask(e) {
-		e.preventDefault();
+	async function handleDeleteTask(e) {
+		const res = fetch('/', {
+			method: 'DELETE',
+			body: JSON.stringify({ id: task.id })
+		}).then((res) => res.json());
+
+		showModalDelete = false;
+		invalidate(() => true);
 	}
 </script>
 
