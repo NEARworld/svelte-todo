@@ -1,4 +1,6 @@
 <script>
+	import Task from './Task.svelte';
+
 	export let tasks;
 </script>
 
@@ -13,11 +15,7 @@
 		</thead>
 		<tbody>
 			{#each tasks as task}
-				<tr>
-					<th>{task.id}</th>
-					<td>{task.text}</td>
-					<td>Quality Control Specialist</td>
-				</tr>
+				<Task {task} />
 			{/each}
 		</tbody>
 	</table>
