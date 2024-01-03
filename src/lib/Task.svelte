@@ -6,6 +6,8 @@
 	let showModalEdit = false; // state
 	let editedTaskValue = ''; // state
 
+	let showModalDelete = false;
+
 	console.log(showModalEdit); // logged on server
 	function handleEditTask() {
 		editedTaskValue = '';
@@ -34,6 +36,8 @@
 				</div>
 			</form>
 		</Modal>
-		<Icon icon="mdi:trash-outline" class="scale-175 cursor-pointer text-red-600" />
+		<button on:click={() => (showModalDelete = true)}>
+			<Icon icon="mdi:trash-outline" class="scale-175 cursor-pointer text-red-600" />
+		</button>
 	</td>
 </tr>
