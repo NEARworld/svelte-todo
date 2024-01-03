@@ -10,6 +10,6 @@
 	<div class="text-center my-5 flex flex-col gap-4">
 		<h1 class="text-2xl font-bold">Svelte Todo App</h1>
 		<AddTask />
-		<TodoList tasks={data.tasks} />
+		<TodoList tasks={data.todos} />
 	</div>
 </main>
