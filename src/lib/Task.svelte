@@ -1,6 +1,7 @@
 <script>
 	import Icon from '@iconify/svelte';
 	import Modal from '$lib/Modal.svelte';
+	import { invalidate } from '$app/navigation';
 
 	export let task; // prop
 	let showModalEdit = false; // state
@@ -8,9 +9,17 @@
 
 	let showModalDelete = false;
 
-	console.log(showModalEdit); // logged on server
-	function handleEditTask() {
-		editedTaskValue = '';
+	async function handleEditTask() {
+		const res = await fetch('/', {
+			method: 'PATCH',
+			body: JSON.stringify({ id: task.id, text: editedTaskValue })
+		});
+
+		const data = await res.json();
+		if (data) {
+			editedTaskValue = '';
+			invalidate(() => true);
+		}
 	}
 	function handleDeleteTask(e) {
 		e.preventDefault();
