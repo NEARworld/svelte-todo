@@ -17,6 +17,7 @@
 		});
 		const data = await res.json();
 		if (data) {
+			newTaskValue = '';
 			invalidate(() => true);
 		}
 	}
@@ -32,6 +33,7 @@
 			<div class="modal-action">
 				<input
 					type="text"
+					value={newTaskValue}
 					placeholder="Type here"
 					class="input input-bordered w-full"
 					on:input={(e) => (newTaskValue = e.target.value)}
