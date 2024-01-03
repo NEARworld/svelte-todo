@@ -1,14 +1,39 @@
 <script>
 	import Icon from '@iconify/svelte';
+	import Modal from '$lib/Modal.svelte';
 
-	export let task;
+	export let task; // prop
+	let showModalEdit = false; // state
+	let editedTaskValue = ''; // state
+
+	console.log(showModalEdit); // logged on server
+	function handleEditTask() {
+		editedTaskValue = '';
+	}
 </script>
 
 <tr>
 	<th>{task.id}</th>
 	<td>{task.text}</td>
 	<td class="flex gap-3">
-		<Icon icon="bx:edit" class="scale-150 cursor-pointer text-blue-600" />
+		<button on:click={() => (showModalEdit = true)}>
+			<Icon icon="bx:edit" class="scale-150 cursor-pointer text-blue-600" />
+		</button>
+		<Modal bind:showModal={showModalEdit} bind:inputValue={editedTaskValue}>
+			<form on:submit={handleEditTask}>
+				<h3 class="font-bold text-lg">Edit Task</h3>
+				<div class="modal-action">
+					<input
+						type="text"
+						value={editedTaskValue}
+						placeholder="Type here"
+						class="input input-bordered w-full"
+						on:input={(e) => (editedTaskValue = e.target.value)}
+					/>
+					<button class="btn btn-primary" on:click={() => (showModalEdit = false)}>submit</button>
+				</div>
+			</form>
+		</Modal>
 		<Icon icon="mdi:trash-outline" class="scale-175 cursor-pointer text-red-600" />
 	</td>
 </tr>
