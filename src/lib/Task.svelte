@@ -10,7 +10,7 @@
 	let showModalDelete = false;
 
 	async function handleEditTask() {
-		const res = await fetch('/', {
+		const res = await fetch('/api/todos', {
 			method: 'PATCH',
 			body: JSON.stringify({ id: task.id, text: editedTaskValue })
 		});
