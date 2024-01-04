@@ -4,6 +4,8 @@
 	import TodoList from '$lib/TodoList.svelte';
 
 	export let data;
+
+	console.log('page.svelte');
 </script>
 
 <main class="max-w-4xl mx-auto mt-4">
