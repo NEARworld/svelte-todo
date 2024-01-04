@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export async function GET() {
 	try {
-		const todos = await prisma.todo.findMany(); // return array
+		const todos = await prisma.todo.findMany({ orderBy: { id: 'asc' } }); // return array
 
 		return new Response(JSON.stringify({ todos }), {
 			status: 200
